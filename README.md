@@ -47,16 +47,35 @@ yandex_compute_instance_group.lamp-group: Still creating... [1m50s elapsed]
 yandex_compute_instance_group.lamp-group: Still creating... [2m0s elapsed]
 yandex_compute_instance_group.lamp-group: Still creating... [2m10s elapsed]
 yandex_compute_instance_group.lamp-group: Creation complete after 2m16s [id=cl1lbted00hkbv720d0v]
-
 Apply complete! Resources: 6 added, 0 changed, 0 destroyed.
-
 Outputs:
-
 bucket_access_key = <sensitive>
 pic-url = "https://storage.yandexcloud.net/paint"
-
 ```
+```
+yandex_iam_service_account_static_access_key.sa-static-key: Destroying... [id=aje2vjsuj1i30etg7jvm]
+yandex_lb_network_load_balancer.vp-nlb-1: Destroying... [id=enpu9l3p91q1tgr3nt2m]
+yandex_compute_instance_group.lamp-group: Destroying... [id=cl1lbted00hkbv720d0v]
+yandex_iam_service_account_static_access_key.sa-static-key: Destruction complete after 2s
+yandex_lb_network_load_balancer.vp-nlb-1: Destruction complete after 4s
+yandex_lb_target_group.target-group: Destroying... [id=enp1s16ahvqclg9i9j0p]
+yandex_lb_target_group.target-group: Destruction complete after 2s
+yandex_compute_instance_group.lamp-group: Still destroying... [id=cl1lbted00hkbv720d0v, 10s elapsed]
+yandex_compute_instance_group.lamp-group: Still destroying... [id=cl1lbted00hkbv720d0v, 20s elapsed]
+yandex_compute_instance_group.lamp-group: Still destroying... [id=cl1lbted00hkbv720d0v, 30s elapsed]
+yandex_compute_instance_group.lamp-group: Still destroying... [id=cl1lbted00hkbv720d0v, 40s elapsed]
+yandex_compute_instance_group.lamp-group: Still destroying... [id=cl1lbted00hkbv720d0v, 50s elapsed]
+yandex_compute_instance_group.lamp-group: Still destroying... [id=cl1lbted00hkbv720d0v, 1m0s elapsed]
+yandex_compute_instance_group.lamp-group: Destruction complete after 1m9s
+yandex_vpc_subnet.subnet-b: Destroying... [id=e2lg089v5thgaocri3ub]
+yandex_vpc_subnet.subnet-a: Destroying... [id=e9bho6ned3f0m86i5jr6]
+yandex_vpc_subnet.subnet-b: Destruction complete after 2s
+yandex_vpc_subnet.subnet-a: Destruction complete after 5s
+yandex_vpc_network.netology-net: Destroying... [id=enp574hn21e49lro42lu]
+yandex_vpc_network.netology-net: Destruction complete after 1s
 
+Destroy complete! Resources: 7 destroyed.
+```
 
 ### Ожидаемые результаты:
 - Terraform сконфигурирован и создание инфраструктуры посредством Terraform возможно без дополнительных ручных действий.
