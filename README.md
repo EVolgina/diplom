@@ -20,7 +20,40 @@
 - Создайте VPC с подсетями в разных зонах доступности.
 - Убедитесь, что теперь вы можете выполнить команды terraform destroy и terraform apply без дополнительных ручных действий.
 - В случае использования Terraform Cloud в качестве backend убедитесь, что применение изменений успешно проходит, используя web-интерфейс Terraform cloud.
+[main.tf]()
 ```
+yandex_vpc_network.netology-net: Creating...
+yandex_vpc_network.netology-net: Creation complete after 4s [id=enp574hn21e49lro42lu]
+yandex_vpc_subnet.subnet-a: Creating...
+yandex_vpc_subnet.subnet-b: Creating...
+yandex_vpc_subnet.subnet-b: Creation complete after 1s [id=e2lg089v5thgaocri3ub]
+yandex_vpc_subnet.subnet-a: Creation complete after 2s [id=e9bho6ned3f0m86i5jr6]
+yandex_lb_target_group.target-group: Creating...
+yandex_compute_instance_group.lamp-group: Creating...
+yandex_lb_target_group.target-group: Creation complete after 2s [id=enp1s16ahvqclg9i9j0p]
+yandex_lb_network_load_balancer.vp-nlb-1: Creating...
+yandex_lb_network_load_balancer.vp-nlb-1: Creation complete after 3s [id=enpu9l3p91q1tgr3nt2m]
+yandex_compute_instance_group.lamp-group: Still creating... [10s elapsed]
+yandex_compute_instance_group.lamp-group: Still creating... [20s elapsed]
+yandex_compute_instance_group.lamp-group: Still creating... [30s elapsed]
+yandex_compute_instance_group.lamp-group: Still creating... [40s elapsed]
+yandex_compute_instance_group.lamp-group: Still creating... [50s elapsed]
+yandex_compute_instance_group.lamp-group: Still creating... [1m0s elapsed]
+yandex_compute_instance_group.lamp-group: Still creating... [1m10s elapsed]
+yandex_compute_instance_group.lamp-group: Still creating... [1m20s elapsed]
+yandex_compute_instance_group.lamp-group: Still creating... [1m30s elapsed]
+yandex_compute_instance_group.lamp-group: Still creating... [1m40s elapsed]
+yandex_compute_instance_group.lamp-group: Still creating... [1m50s elapsed]
+yandex_compute_instance_group.lamp-group: Still creating... [2m0s elapsed]
+yandex_compute_instance_group.lamp-group: Still creating... [2m10s elapsed]
+yandex_compute_instance_group.lamp-group: Creation complete after 2m16s [id=cl1lbted00hkbv720d0v]
+
+Apply complete! Resources: 6 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+bucket_access_key = <sensitive>
+pic-url = "https://storage.yandexcloud.net/paint"
 
 ```
 
