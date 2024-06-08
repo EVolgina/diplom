@@ -77,7 +77,7 @@ yandex_vpc_network.netology-net: Destruction complete after 1s
 
 Destroy complete! Resources: 7 destroyed.
 ```
-![YC1]()
+![YC1](https://github.com/EVolgina/diplom/blob/main/destroy.png)
 
 ### Ожидаемые результаты:
 - Terraform сконфигурирован и создание инфраструктуры посредством Terraform возможно без дополнительных ручных действий.
