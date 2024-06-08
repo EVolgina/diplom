@@ -52,6 +52,7 @@ Outputs:
 bucket_access_key = <sensitive>
 pic-url = "https://storage.yandexcloud.net/paint"
 ```
+![YC](https://github.com/EVolgina/diplom/blob/main/yc%20terraform.png)
 ```
 yandex_iam_service_account_static_access_key.sa-static-key: Destroying... [id=aje2vjsuj1i30etg7jvm]
 yandex_lb_network_load_balancer.vp-nlb-1: Destroying... [id=enpu9l3p91q1tgr3nt2m]
@@ -76,6 +77,7 @@ yandex_vpc_network.netology-net: Destruction complete after 1s
 
 Destroy complete! Resources: 7 destroyed.
 ```
+![YC1]()
 
 ### Ожидаемые результаты:
 - Terraform сконфигурирован и создание инфраструктуры посредством Terraform возможно без дополнительных ручных действий.
