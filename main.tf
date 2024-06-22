@@ -35,9 +35,9 @@ resource "yandex_vpc_subnet" "subnet-b" {
   network_id     = yandex_vpc_network.netology-net.id
   v4_cidr_blocks = ["10.0.1.0/24"]
 }
-#resource "yandex_vpc_subnet" "subnet-c" {
-#  name           = "subnet-c"
-#  zone           = "ru-central1-c"
+#resource "yandex_vpc_subnet" "subnet-d" {
+#  name           = "subnet-d"
+#  zone           = "ru-central1-d"
 #  network_id     = yandex_vpc_network.netology-net.id
 #  v4_cidr_blocks = ["10.0.2.0/24"]
 #}
@@ -66,7 +66,7 @@ resource "yandex_lb_target_group" "target-group" {
     address   = "10.0.1.10"
   }
 #  target {
-#    subnet_id = yandex_vpc_subnet.subnet-c.id
+#    subnet_id = yandex_vpc_subnet.subnet-d.id
 #    address   = "10.0.2.10"
 #  }
 }
