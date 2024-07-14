@@ -221,6 +221,29 @@ ubuntu@cl1ald2puucg4gqoi8h6-apav:~$ curl -sL https://github.com/splunk/qbec/rele
 ubuntu@cl1ald2puucg4gqoi8h6-apav:~$ chmod +x qbec
 ubuntu@cl1ald2puucg4gqoi8h6-apav:~$ sudo nano gitlab-ci.yml
 [gitlab-ci.yaml]()
+
+ubuntu@cl1ald2puucg4gqoi8h6-apav:~$ kubectl get pods
+NAME                                                     READY   STATUS    RESTARTS   AGE
+alertmanager-kube-prometheus-kube-prome-alertmanager-0   2/2     Running   0          24m
+kube-prometheus-grafana-5dd885c8c8-5l9j6                 3/3     Running   0          24m
+kube-prometheus-kube-prome-operator-67b7d8dd89-hb4s2     1/1     Running   0          24m
+kube-prometheus-kube-state-metrics-6cb5d64cbd-x74zx      1/1     Running   0          24m
+kube-prometheus-prometheus-node-exporter-qpclg           1/1     Running   0          24m
+nginx-deployment-57d84f57dc-2sxqg                        1/1     Running   0          21m
+nginx-deployment-57d84f57dc-8j95z                        1/1     Running   0          21m
+nginx-deployment-57d84f57dc-pkmd4                        1/1     Running   0          21m
+prometheus-kube-prometheus-kube-prome-prometheus-0       2/2     Running   0          24m
+ubuntu@cl1ald2puucg4gqoi8h6-apav:~$ kubectl get svc
+NAME                                       TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)                      AGE
+alertmanager-operated                      ClusterIP   None            <none>        9093/TCP,9094/TCP,9094/UDP   24m
+kube-prometheus-grafana                    ClusterIP   10.96.193.146   <none>        80/TCP                       25m
+kube-prometheus-kube-prome-alertmanager    ClusterIP   10.96.152.142   <none>        9093/TCP,8080/TCP            25m
+kube-prometheus-kube-prome-operator        ClusterIP   10.96.251.18    <none>        443/TCP                      25m
+kube-prometheus-kube-prome-prometheus      ClusterIP   10.96.202.164   <none>        9090/TCP,8080/TCP            25m
+kube-prometheus-kube-state-metrics         ClusterIP   10.96.249.31    <none>        8080/TCP                     25m
+kube-prometheus-prometheus-node-exporter   ClusterIP   10.96.197.109   <none>        9100/TCP                     25m
+kubernetes                                 ClusterIP   10.96.128.1     <none>        443/TCP                      6h40m
+prometheus-operated                        ClusterIP   None            <none>        9090/TCP                     24m
 ```
 ### Установка и настройка CI/CD
 - Осталось настроить ci/cd систему для автоматической сборки docker image и деплоя приложения при изменении кода.
