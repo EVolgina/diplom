@@ -101,9 +101,36 @@ vagrant@vagrant:~/diplom$ yc managed-kubernetes cluster list
 +----------------------+--------------+---------------------+---------+---------+-------------------+-------------------+
 |          ID          |     NAME     |     CREATED AT      | HEALTH  | STATUS  | EXTERNAL ENDPOINT | INTERNAL ENDPOINT |
 +----------------------+--------------+---------------------+---------+---------+-------------------+-------------------+
-| cat8vr85b8482faa506v | k8s-regional | 2024-07-04 14:48:44 | HEALTHY | RUNNING |                   | https://10.5.0.5  |
+| catta4q7s8kk7h0735g4 | k8s-regional | 2024-07-14 08:19:24 | HEALTHY | RUNNING |                   | https://10.5.0.14 |
 +----------------------+--------------+---------------------+---------+---------+-------------------+-------------------+
 yc managed-kubernetes cluster get-credentials  cat8vr85b8482faa506v --external --force --kubeconfig ~/.kube/config
+vagrant@vagrant:~/diplom$ cat ~/.kube/config
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUM1ekNDQWMrZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFWTVJNd0VRWURWUVFERXdwcmRXSmwKY201bGRHVnpNQjRYRFRJME1EY3hOREE0TVRreU5sb1hEVE0wTURjeE1qQTRNVGt5Tmxvd0ZURVRNQkVHQTFVRQpBeE1LYTNWaVpYSnVaWFJsY3pDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBTEZtClM2cmFsOXgvSjhnTGF5WTB3b0tLSHpxc0srSDNkd1JySXVQYnBOV1orTlhsU3BRUCtUbmpLeXpOWjRvM3U3L2gKcmsxaGUzR3dxRFdPcGZoVWhabHJkNUlRUlBTWmVJYkNzNDluS1RGVzdyZzNLeDRkRUZhWndqcURwaGxBODhGdwphUmhJTTk1cVA5L3BMYmltb2lyQVZnYzRhcGdrQUF0S1l4SEpnMXhhQmJTY3FYbkxyQ0owUFpzM1JYNWprell6CmpZNm1hMEVLM1ZnTk5NdmgwZmNrOVJyQUJrQ1RBNUFTYlhMVnZQY0E5aS93dGFFSTBhNTFoMTB4NkI0bVFicjkKNCtiNEQ3MHZFZExyNDlJd1RUSVEvbzgxTmJuTzRFdEZaOVp4UjJZaFZ5NDNYR2x2TCt1NEJGMVhnWTRJWnlEMQpwZHdpbHRXeE5mWlVDQkNPamFrQ0F3RUFBYU5DTUVBd0RnWURWUjBQQVFIL0JBUURBZ0trTUE4R0ExVWRFd0VCCi93UUZNQU1CQWY4d0hRWURWUjBPQkJZRUZHY3g1bjJGTCtnbEk4K2EzYzl3WDVVbzQvb2lNQTBHQ1NxR1NJYjMKRFFFQkN3VUFBNElCQVFDS2x6S2hHeHd6S2pXdEhhS2lQeUJVNG52M21GcXF5aE1ndm01ZDVBcEtTRmdzOWE5aQpNekpMYm1CSEpJY1ZIbjRhRFBuMENPYWpHUW40TEJ4MjRuV2lWZmxUUlU2TlNyc0NnRTZVQ0N1ZXYvL2srSUNyCjhPc0daVTVpNVl3cmNDK3RLKzlabEFWWVBOU0VsRFpaMlh0T3BLRnptTjhqUFl1ZEtlYVc3TzVicjI0Ym1CNTIKSjl6MGQxMjl3RUZYRllhZC8yWmdZaGF6Q2I0NWRUU2ZCdzlvUGU1QzJBWFQvZzBUTlRYQ3cvU05lRnlNWDI3cQpwZ3lBQ2VvME1kUzlGRGI1YjVBS3JXVWNuVkMwMy90bWk2VzYrckpZQzk5QUM3eTNkbHN0Wm45U3M0SmhNV0NTCmxmNlFLRUtUY0NCVWVlVy93WnBoTWlmQlFRQjNUNTMxRVBvKwotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+    server: https://10.5.0.14
+  name: yc-managed-k8s-catta4q7s8kk7h0735g4
+contexts:
+- context:
+    cluster: yc-managed-k8s-catta4q7s8kk7h0735g4
+    user: yc-managed-k8s-catta4q7s8kk7h0735g4
+  name: yc-k8s-regional
+current-context: yc-k8s-regional
+kind: Config
+preferences: {}
+users:
+- name: yc-managed-k8s-catta4q7s8kk7h0735g4
+  user:
+    exec:
+      apiVersion: client.authentication.k8s.io/v1beta1
+      args:
+      - k8s
+      - create-token
+      - --profile=k8s-regional
+      command: /home/vagrant/yandex-cloud/bin/yc
+      env: null
+      provideClusterInfo: false
 ```
 ### Создание тестового приложения
 - Для перехода к следующему этапу необходимо подготовить тестовое приложение, эмулирующее основное приложение разрабатываемое вашей компанией.
