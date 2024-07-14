@@ -97,40 +97,26 @@ Destroy complete! Resources: 7 destroyed.
 - В файле ~/.kube/config находятся данные для доступа к кластеру.
 - Команда kubectl get pods --all-namespaces отрабатывает без ошибок.
 ```  
-vagrant@vagrant:~/diplom$ yc managed-kubernetes cluster list
-+----------------------+--------------+---------------------+---------+---------+-------------------+-------------------+
-|          ID          |     NAME     |     CREATED AT      | HEALTH  | STATUS  | EXTERNAL ENDPOINT | INTERNAL ENDPOINT |
-+----------------------+--------------+---------------------+---------+---------+-------------------+-------------------+
-| catta4q7s8kk7h0735g4 | k8s-regional | 2024-07-14 08:19:24 | HEALTHY | RUNNING |                   | https://10.5.0.14 |
-+----------------------+--------------+---------------------+---------+---------+-------------------+-------------------+
-yc managed-kubernetes cluster get-credentials  cat8vr85b8482faa506v --external --force --kubeconfig ~/.kube/config
-vagrant@vagrant:~/diplom$ cat ~/.kube/config
-apiVersion: v1
-clusters:
-- cluster:
-    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUM1ekNDQWMrZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFWTVJNd0VRWURWUVFERXdwcmRXSmwKY201bGRHVnpNQjRYRFRJME1EY3hOREE0TVRreU5sb1hEVE0wTURjeE1qQTRNVGt5Tmxvd0ZURVRNQkVHQTFVRQpBeE1LYTNWaVpYSnVaWFJsY3pDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBTEZtClM2cmFsOXgvSjhnTGF5WTB3b0tLSHpxc0srSDNkd1JySXVQYnBOV1orTlhsU3BRUCtUbmpLeXpOWjRvM3U3L2gKcmsxaGUzR3dxRFdPcGZoVWhabHJkNUlRUlBTWmVJYkNzNDluS1RGVzdyZzNLeDRkRUZhWndqcURwaGxBODhGdwphUmhJTTk1cVA5L3BMYmltb2lyQVZnYzRhcGdrQUF0S1l4SEpnMXhhQmJTY3FYbkxyQ0owUFpzM1JYNWprell6CmpZNm1hMEVLM1ZnTk5NdmgwZmNrOVJyQUJrQ1RBNUFTYlhMVnZQY0E5aS93dGFFSTBhNTFoMTB4NkI0bVFicjkKNCtiNEQ3MHZFZExyNDlJd1RUSVEvbzgxTmJuTzRFdEZaOVp4UjJZaFZ5NDNYR2x2TCt1NEJGMVhnWTRJWnlEMQpwZHdpbHRXeE5mWlVDQkNPamFrQ0F3RUFBYU5DTUVBd0RnWURWUjBQQVFIL0JBUURBZ0trTUE4R0ExVWRFd0VCCi93UUZNQU1CQWY4d0hRWURWUjBPQkJZRUZHY3g1bjJGTCtnbEk4K2EzYzl3WDVVbzQvb2lNQTBHQ1NxR1NJYjMKRFFFQkN3VUFBNElCQVFDS2x6S2hHeHd6S2pXdEhhS2lQeUJVNG52M21GcXF5aE1ndm01ZDVBcEtTRmdzOWE5aQpNekpMYm1CSEpJY1ZIbjRhRFBuMENPYWpHUW40TEJ4MjRuV2lWZmxUUlU2TlNyc0NnRTZVQ0N1ZXYvL2srSUNyCjhPc0daVTVpNVl3cmNDK3RLKzlabEFWWVBOU0VsRFpaMlh0T3BLRnptTjhqUFl1ZEtlYVc3TzVicjI0Ym1CNTIKSjl6MGQxMjl3RUZYRllhZC8yWmdZaGF6Q2I0NWRUU2ZCdzlvUGU1QzJBWFQvZzBUTlRYQ3cvU05lRnlNWDI3cQpwZ3lBQ2VvME1kUzlGRGI1YjVBS3JXVWNuVkMwMy90bWk2VzYrckpZQzk5QUM3eTNkbHN0Wm45U3M0SmhNV0NTCmxmNlFLRUtUY0NCVWVlVy93WnBoTWlmQlFRQjNUNTMxRVBvKwotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
-    server: https://10.5.0.14
-  name: yc-managed-k8s-catta4q7s8kk7h0735g4
-contexts:
-- context:
-    cluster: yc-managed-k8s-catta4q7s8kk7h0735g4
-    user: yc-managed-k8s-catta4q7s8kk7h0735g4
-  name: yc-k8s-regional
-current-context: yc-k8s-regional
-kind: Config
-preferences: {}
-users:
-- name: yc-managed-k8s-catta4q7s8kk7h0735g4
-  user:
-    exec:
-      apiVersion: client.authentication.k8s.io/v1beta1
-      args:
-      - k8s
-      - create-token
-      - --profile=k8s-regional
-      command: /home/vagrant/yandex-cloud/bin/yc
-      env: null
-      provideClusterInfo: false
+vagrant@vagrant:~/diplom$ ssh ubuntu@158.160.66.21 - подключаемся к одной из ВМ  настраиваем все и проверяем
+Welcome to Ubuntu 18.04.6 LTS (GNU/Linux 4.15.0-55-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+
+#################################################################
+This instance runs Yandex.Cloud Marketplace product
+You can view generated credentials in /root/default_passwords.txt
+
+Only 80, 443 and 22 tcp ports are open by default
+To view all network permissions exec “sudo iptables-save” and “sudo ip6tables-save”
+
+Documentation for Yandex Cloud Marketplace images available at https://cloud.yandex.ru/docs
+
+#################################################################
+
+Last login: Sun Jul 14 13:22:49 2024 from 95.164.33.154
 ubuntu@cl1ald2puucg4gqoi8h6-apav:~$ curl -LO https://dl.k8s.io/release/`curl -LS https://dl.k8s.io/release/stable.txt`/bin/linux/amd64/kubectl
 ubuntu@cl1ald2puucg4gqoi8h6-apav:~$ chmod +x ./kubectl
 ubuntu@cl1ald2puucg4gqoi8h6-apav:~$ sudo mv ./kubectl /usr/local/bin/kubectl
@@ -143,6 +129,13 @@ Context 'yc-k8s-regional' was added as default to kubeconfig '/home/ubuntu/.kube
 Check connection to cluster using 'kubectl cluster-info --kubeconfig /home/ubuntu/.kube/config'.
 Note, that authentication depends on 'yc' and its config profile 'default'.
 To access clusters using the Kubernetes API, please use Kubernetes Service Account.
+ubuntu@cl1ald2puucg4gqoi8h6-apav:~$ yc managed-kubernetes cluster list
++----------------------+--------------+---------------------+---------+---------+-------------------+-------------------+
+|          ID          |     NAME     |     CREATED AT      | HEALTH  | STATUS  | EXTERNAL ENDPOINT | INTERNAL ENDPOINT |
++----------------------+--------------+---------------------+---------+---------+-------------------+-------------------+
+| catta4q7s8kk7h0735g4 | k8s-regional | 2024-07-14 08:19:24 | HEALTHY | RUNNING |                   | https://10.5.0.14 |
++----------------------+--------------+---------------------+---------+---------+-------------------+-------------------+
+yc managed-kubernetes cluster get-credentials  cat8vr85b8482faa506v --external --force --kubeconfig ~/.kube/config
 ubuntu@cl1ald2puucg4gqoi8h6-apav:~$ kubectl cluster-info
 Kubernetes control plane is running at https://10.5.0.14
 CoreDNS is running at https://10.5.0.14/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
@@ -175,7 +168,9 @@ cl1d7h35ocdl5e26bres-apul   Ready    <none>   5h25m   v1.26.2   10.5.0.32     15
 ## Ожидаемый результат:
 - Git репозиторий с тестовым приложением и Dockerfile.
 - Регистри с собранным docker image. В качестве регистри может быть DockerHub или Yandex Container Registry, созданный также с помощью terraform.
-  
+ ![git]()
+```
+```
 ## Подготовка cистемы мониторинга и деплой приложения
 - Уже должны быть готовы конфигурации для автоматического создания облачной инфраструктуры и поднятия Kubernetes кластера.
 - Теперь необходимо подготовить конфигурационные файлы для настройки нашего Kubernetes кластера.
