@@ -169,7 +169,7 @@ cl1d7h35ocdl5e26bres-apul   Ready    <none>   5h25m   v1.26.2   10.5.0.32     15
 - Git репозиторий с тестовым приложением и Dockerfile.
 - Регистри с собранным docker image. В качестве регистри может быть DockerHub или Yandex Container Registry, созданный также с помощью terraform.
 ![git](https://github.com/EVolgina/diplom/blob/main/docker%20creaate.png)
-![doc]()
+![doc](https://github.com/EVolgina/diplom/blob/main/dockerhub.png)
 ```
 ```
 ## Подготовка cистемы мониторинга и деплой приложения
