@@ -170,8 +170,7 @@ cl1d7h35ocdl5e26bres-apul   Ready    <none>   5h25m   v1.26.2   10.5.0.32     15
 - Регистри с собранным docker image. В качестве регистри может быть DockerHub или Yandex Container Registry, созданный также с помощью terraform.
 ![git](https://github.com/EVolgina/diplom/blob/main/docker%20creaate.png)
 ![doc](https://github.com/EVolgina/diplom/blob/main/dockerhub.png)
-```
-```
+
 ## Подготовка cистемы мониторинга и деплой приложения
 - Уже должны быть готовы конфигурации для автоматического создания облачной инфраструктуры и поднятия Kubernetes кластера.
 - Теперь необходимо подготовить конфигурационные файлы для настройки нашего Kubernetes кластера.
@@ -187,6 +186,42 @@ cl1d7h35ocdl5e26bres-apul   Ready    <none>   5h25m   v1.26.2   10.5.0.32     15
 - Http доступ к web интерфейсу grafana.
 - Дашборды в grafana отображающие состояние Kubernetes кластера.
 - Http доступ к тестовому приложению.
+```
+ubuntu@cl1ald2puucg4gqoi8h6-apav:~$ curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 11694  100 11694    0     0  74012      0 --:--:-- --:--:-- --:--:-- 74012
+[WARNING] Could not find git. It is required for plugin installation.
+Downloading https://get.helm.sh/helm-v3.15.3-linux-amd64.tar.gz
+Verifying checksum... Done.
+Preparing to install helm into /usr/local/bin
+helm installed into /usr/local/bin/helm
+ubuntu@cl1ald2puucg4gqoi8h6-apav:~$  helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+"prometheus-community" has been added to your repositories
+ubuntu@cl1ald2puucg4gqoi8h6-apav:~$  helm repo update
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "prometheus-community" chart repository
+Update Complete. ⎈Happy Helming!⎈
+ubuntu@cl1ald2puucg4gqoi8h6-apav:~$ sudo nano kub-prom.yaml
+ubuntu@cl1ald2puucg4gqoi8h6-apav:~$ helm install kube-prometheus prometheus-community/kube-prometheus-stack -f kub-prom.yaml
+NAME: kube-prometheus
+LAST DEPLOYED: Sun Jul 14 14:37:02 2024
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+NOTES:
+kube-prometheus-stack has been installed. Check its status by running:
+  kubectl --namespace default get pods -l "release=kube-prometheus"
+
+Visit https://github.com/prometheus-operator/kube-prometheus for instructions on how to create & configure Alertmanager and Prometheus instances using the Operator.
+ubuntu@cl1ald2puucg4gqoi8h6-apav:~$ sudo nano deployment.yaml
+ubuntu@cl1ald2puucg4gqoi8h6-apav:~$ kubectl apply -f deployment.yaml
+deployment.apps/nginx-deployment created
+ubuntu@cl1ald2puucg4gqoi8h6-apav:~$ curl -sL https://github.com/splunk/qbec/releases/download/v0.17.0/qbec-linux-amd64 -o qbec
+ubuntu@cl1ald2puucg4gqoi8h6-apav:~$ chmod +x qbec
+ubuntu@cl1ald2puucg4gqoi8h6-apav:~$ sudo nano gitlab-ci.yml
+[gitlab-ci.yaml]()
+```
 ### Установка и настройка CI/CD
 - Осталось настроить ci/cd систему для автоматической сборки docker image и деплоя приложения при изменении кода.
 ## Цель:
