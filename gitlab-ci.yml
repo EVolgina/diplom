@@ -7,8 +7,8 @@ deploy:
   script:
     - helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
     - helm repo update
-    - helm install kube-prometheus prometheus-community/kube-prometheus-stack -f kube-prometheus-values.yaml
-    - kubectl apply -f nginx-deployment.yaml
+    - helm install kube-prometheus prometheus-community/kube-prometheus-stack -f kube-prom.yaml
+    - kubectl apply -f deployment.yaml
   only:
     - main
 
