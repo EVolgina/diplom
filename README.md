@@ -131,6 +131,26 @@ users:
       command: /home/vagrant/yandex-cloud/bin/yc
       env: null
       provideClusterInfo: false
+ubuntu@cl1ald2puucg4gqoi8h6-apav:~$ kubectl cluster-info
+Kubernetes control plane is running at https://10.5.0.14
+CoreDNS is running at https://10.5.0.14/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+ubuntu@cl1ald2puucg4gqoi8h6-apav:~$ kubectl get nodes
+NAME                        STATUS   ROLES    AGE     VERSION
+cl1d7h35ocdl5e26bres-apul   Ready    <none>   5h23m   v1.26.2
+ubuntu@cl1ald2puucg4gqoi8h6-apav:~$ kubectl get pods --all-namespaces
+NAMESPACE     NAME                                  READY   STATUS    RESTARTS        AGE
+kube-system   coredns-57b57bfc5b-sbgdg              1/1     Running   0               5h28m
+kube-system   ip-masq-agent-lm9vl                   1/1     Running   0               5h24m
+kube-system   kube-dns-autoscaler-bd7cc5977-cngmj   1/1     Running   0               5h28m
+kube-system   kube-proxy-zqbfm                      1/1     Running   0               5h24m
+kube-system   metrics-server-6f485d9c99-qsj4w       2/2     Running   1 (5h22m ago)   5h23m
+kube-system   npd-v0.8.0-7mr2q                      1/1     Running   0               5h24m
+kube-system   yc-disk-csi-node-v2-67wtx             6/6     Running   0               5h24m
+ubuntu@cl1ald2puucg4gqoi8h6-apav:~$ kubectl get nodes -o wide
+NAME                        STATUS   ROLES    AGE     VERSION   INTERNAL-IP   EXTERNAL-IP       OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
+cl1d7h35ocdl5e26bres-apul   Ready    <none>   5h25m   v1.26.2   10.5.0.32     158.160.124.238   Ubuntu 20.04.6 LTS   5.4.0-177-generic   containerd://1.6.28
 ```
 ### Создание тестового приложения
 - Для перехода к следующему этапу необходимо подготовить тестовое приложение, эмулирующее основное приложение разрабатываемое вашей компанией.
