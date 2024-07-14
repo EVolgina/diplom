@@ -131,6 +131,18 @@ users:
       command: /home/vagrant/yandex-cloud/bin/yc
       env: null
       provideClusterInfo: false
+ubuntu@cl1ald2puucg4gqoi8h6-apav:~$ curl -LO https://dl.k8s.io/release/`curl -LS https://dl.k8s.io/release/stable.txt`/bin/linux/amd64/kubectl
+ubuntu@cl1ald2puucg4gqoi8h6-apav:~$ chmod +x ./kubectl
+ubuntu@cl1ald2puucg4gqoi8h6-apav:~$ sudo mv ./kubectl /usr/local/bin/kubectl
+ubuntu@cl1ald2puucg4gqoi8h6-apav:~$ kubectl version --client
+Client Version: v1.30.2
+Kustomize Version: v5.0.4-0.20230601165947-6ce0bf390ce3
+
+ubuntu@cl1ald2puucg4gqoi8h6-apav:~$ yc managed-kubernetes cluster get-credentials catta4q7s8kk7h0735g4 --internal --force
+Context 'yc-k8s-regional' was added as default to kubeconfig '/home/ubuntu/.kube/config'.
+Check connection to cluster using 'kubectl cluster-info --kubeconfig /home/ubuntu/.kube/config'.
+Note, that authentication depends on 'yc' and its config profile 'default'.
+To access clusters using the Kubernetes API, please use Kubernetes Service Account.
 ubuntu@cl1ald2puucg4gqoi8h6-apav:~$ kubectl cluster-info
 Kubernetes control plane is running at https://10.5.0.14
 CoreDNS is running at https://10.5.0.14/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
