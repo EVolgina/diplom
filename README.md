@@ -321,6 +321,74 @@ serviceaccount/github-deployer created
 ubuntu@cl1mfrel9uvdtfjp7mdf-inyb:~$ kubectl create secret generic github-deployer-token --from-literal=token=$(kubectl get secret $(kubectl get sa github-deployer -o jsonpath="{.secrets[0].name}") -o jsonpath="{.data.token}" | base64 --decode) -n default
 secret/github-deployer-token created
 ```
+```
+ubuntu@cl1mfrel9uvdtfjp7mdf-inyb:~$ helm install kube-state-metrics prometheus-community/kube-state-metrics
+NAME: kube-state-metrics
+LAST DEPLOYED: Sun Jul 21 13:58:36 2024
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+kube-state-metrics is a simple service that listens to the Kubernetes API server and generates metrics about the state of the objects.
+The exposed metrics can be found here:
+https://github.com/kubernetes/kube-state-metrics/blob/master/docs/README.md#exposed-metrics
+
+The metrics are exported on the HTTP endpoint /metrics on the listening port.
+In your case, kube-state-metrics.default.svc.cluster.local:8080/metrics
+
+They are served either as plaintext or protobuf depending on the Accept header.
+They are designed to be consumed either by Prometheus itself or by a scraper that is compatible with scraping a Prometheus client endpoint.
+ubuntu@cl1mfrel9uvdtfjp7mdf-inyb:~$ helm install node-exporter prometheus-community/prometheus-node-exporter
+NAME: node-exporter
+LAST DEPLOYED: Sun Jul 21 13:59:02 2024
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+1. Get the application URL by running these commands:
+  export POD_NAME=$(kubectl get pods --namespace default -l "app.kubernetes.io/name=prometheus-node-exporter,app.kubernetes.io/instance=node-exporter" -o jsonpath="{.items[0].metadata.name}")
+  echo "Visit http://127.0.0.1:9100 to use your application"
+  kubectl port-forward --namespace default $POD_NAME 9100
+ubuntu@cl1mfrel9uvdtfjp7mdf-inyb:~$ kubectl apply -f grafanalb.yaml
+Warning: resource services/kube-prometheus-grafana is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+service/kube-prometheus-grafana configured
+ubuntu@cl1mfrel9uvdtfjp7mdf-inyb:~$ kubectl get pods --all-namespaces
+NAMESPACE     NAME                                                     READY   STATUS    RESTARTS   AGE
+default       alertmanager-kube-prometheus-kube-prome-alertmanager-0   2/2     Running   0          4h1m
+default       kube-prometheus-grafana-5dd885c8c8-86f46                 3/3     Running   0          4h1m
+default       kube-prometheus-kube-prome-operator-86b96c59dc-st4lk     1/1     Running   0          4h1m
+default       kube-prometheus-kube-state-metrics-6cb5d64cbd-bkfbh      1/1     Running   0          4h1m
+default       kube-prometheus-prometheus-node-exporter-xpttk           1/1     Running   0          4h1m
+default       kube-state-metrics-79466d69bb-7zwck                      1/1     Running   0          61m
+default       nginx-deployment-57d84f57dc-fbzgn                        1/1     Running   0          3h54m
+default       nginx-deployment-57d84f57dc-rkh4v                        1/1     Running   0          3h54m
+default       nginx-deployment-57d84f57dc-wfkzt                        1/1     Running   0          3h54m
+default       node-exporter-prometheus-node-exporter-lltr4             0/1     Pending   0          60m
+default       prometheus-kube-prometheus-kube-prome-prometheus-0       2/2     Running   0          4h1m
+kube-system   coredns-57b57bfc5b-gzpm8                                 1/1     Running   0          5h6m
+kube-system   ip-masq-agent-bzlj6                                      1/1     Running   0          4h31m
+kube-system   kube-dns-autoscaler-bd7cc5977-wwk9h                      1/1     Running   0          5h6m
+kube-system   kube-proxy-kcwb5                                         1/1     Running   0          4h31m
+kube-system   metrics-server-6f485d9c99-47bt4                          2/2     Running   0          4h31m
+kube-system   npd-v0.8.0-2c9mb                                         1/1     Running   0          4h31m
+kube-system   yc-disk-csi-node-v2-wrrfb                                6/6     Running   0          4h31m
+ubuntu@cl1mfrel9uvdtfjp7mdf-inyb:~$ kubectl get svc -o wide
+NAME                                       TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)                      AGE    SELECTOR
+alertmanager-operated                      ClusterIP   None            <none>        9093/TCP,9094/TCP,9094/UDP   4h3m   app.kubernetes.io/name=alertmanager
+kube-prometheus-grafana                    NodePort    10.96.213.62    <none>        80:32001/TCP                 4h3m   app.kubernetes.io/instance=kube-prometheus,app.kubernetes.io/name=grafana
+kube-prometheus-kube-prome-alertmanager    ClusterIP   10.96.175.198   <none>        9093/TCP,8080/TCP            4h3m   alertmanager=kube-prometheus-kube-prome-alertmanager,app.kubernetes.io/name=alertmanager
+kube-prometheus-kube-prome-operator        ClusterIP   10.96.186.115   <none>        443/TCP                      4h3m   app=kube-prometheus-stack-operator,release=kube-prometheus
+kube-prometheus-kube-prome-prometheus      ClusterIP   10.96.232.244   <none>        9090/TCP,8080/TCP            4h3m   app.kubernetes.io/name=prometheus,operator.prometheus.io/name=kube-prometheus-kube-prome-prometheus
+kube-prometheus-kube-state-metrics         ClusterIP   10.96.129.110   <none>        8080/TCP                     4h3m   app.kubernetes.io/instance=kube-prometheus,app.kubernetes.io/name=kube-state-metrics
+kube-prometheus-prometheus-node-exporter   ClusterIP   10.96.195.132   <none>        9100/TCP                     4h3m   app.kubernetes.io/instance=kube-prometheus,app.kubernetes.io/name=prometheus-node-exporter
+kube-state-metrics                         ClusterIP   10.96.174.210   <none>        8080/TCP                     63m    app.kubernetes.io/instance=kube-state-metrics,app.kubernetes.io/name=kube-state-metrics
+kubernetes                                 ClusterIP   10.96.128.1     <none>        443/TCP                      5h8m   <none>
+nginx-service                              NodePort    10.96.142.159   <none>        80:32000/TCP                 57m    app=nginx
+node-exporter-prometheus-node-exporter     ClusterIP   10.96.233.105   <none>        9100/TCP                     62m    app.kubernetes.io/instance=node-exporter,app.kubernetes.io/name=prometheus-node-exporter
+prometheus-operated                        ClusterIP   None            <none>        9090/TCP                     4h3m   app.kubernetes.io/name=prometheus
+```
 ### Установка и настройка CI/CD
 - Осталось настроить ci/cd систему для автоматической сборки docker image и деплоя приложения при изменении кода.
 ## Цель:
