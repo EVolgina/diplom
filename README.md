@@ -123,12 +123,58 @@ ubuntu@cl1ald2puucg4gqoi8h6-apav:~$ sudo mv ./kubectl /usr/local/bin/kubectl
 ubuntu@cl1ald2puucg4gqoi8h6-apav:~$ kubectl version --client
 Client Version: v1.30.2
 Kustomize Version: v5.0.4-0.20230601165947-6ce0bf390ce3
+ubuntu@cl1mfrel9uvdtfjp7mdf-inyb:~$ curl -sSL https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash
+Downloading yc 0.129.0
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 79.5M  100 79.5M    0     0   142M      0 --:--:-- --:--:-- --:--:--  142M
+Yandex Cloud CLI 0.129.0 linux/amd64
 
+yc PATH has been added to your '/home/ubuntu/.bashrc' profile
+yc bash completion has been added to your '/home/ubuntu/.bashrc' profile.
+Now we have zsh completion. Type "echo 'source /home/ubuntu/yandex-cloud/completion.zsh.inc' >>  ~/.zshrc" to install itTo complete installation, start a new shell (exec -l $SHELL) or type 'source "/home/ubuntu/.bashrc"' in the current one
+ubuntu@cl1mfrel9uvdtfjp7mdf-inyb:~$ export PATH="$HOME/yandex-cloud/bin:$PATH"
+ubuntu@cl1mfrel9uvdtfjp7mdf-inyb:~$ source ~/.bashrc
+ubuntu@cl1mfrel9uvdtfjp7mdf-inyb:~$ yc init
+Welcome! This command will take you through the configuration process.
+Please go to https://oauth.yandex.ru/authorize?response_type=token&client_id=1a6990aa636648e9b2ef855fa7bec2fb in order to obtain OAuth token.
+ Please enter OAuth token: 
+You have one cloud available: 'devops27' (id = b1g33d60o7ji59no0on4). It is going to be used by default.
+Please choose folder to use:
+ [1] doc (id = b1gpoeqn2q7if0pboa4u)
+ [2] Create a new folder
+Please enter your numeric choice: 1
+Your current folder has been set to 'doc' (id = b1gpoeqn2q7if0pboa4u).
+Do you want to configure a default Compute zone? [Y/n] y
+Please enter 'yes' or 'no': yes
+Which zone do you want to use as a profile default?
+ [1] ru-central1-a
+ [2] ru-central1-b
+ [3] ru-central1-c
+ [4] ru-central1-d
+ [5] Don't set default zone
+Please enter your numeric choice: 1
+Your profile default Compute zone has been set to 'ru-central1-a'.
 ubuntu@cl1ald2puucg4gqoi8h6-apav:~$ yc managed-kubernetes cluster get-credentials catta4q7s8kk7h0735g4 --internal --force
 Context 'yc-k8s-regional' was added as default to kubeconfig '/home/ubuntu/.kube/config'.
 Check connection to cluster using 'kubectl cluster-info --kubeconfig /home/ubuntu/.kube/config'.
 Note, that authentication depends on 'yc' and its config profile 'default'.
 To access clusters using the Kubernetes API, please use Kubernetes Service Account.
+ubuntu@cl1mfrel9uvdtfjp7mdf-inyb:~$ curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 11694  100 11694    0     0  70872      0 --:--:-- --:--:-- --:--:-- 70872
+[WARNING] Could not find git. It is required for plugin installation.
+Downloading https://get.helm.sh/helm-v3.15.3-linux-amd64.tar.gz
+Verifying checksum... Done.
+Preparing to install helm into /usr/local/bin
+helm installed into /usr/local/bin/helm
+ubuntu@cl1mfrel9uvdtfjp7mdf-inyb:~$ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+"prometheus-community" has been added to your repositories
+ubuntu@cl1mfrel9uvdtfjp7mdf-inyb:~$ helm repo update
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "prometheus-community" chart repository
+Update Complete. ⎈Happy Helming!⎈
 ubuntu@cl1ald2puucg4gqoi8h6-apav:~$ yc managed-kubernetes cluster list
 +----------------------+--------------+---------------------+---------+---------+-------------------+-------------------+
 |          ID          |     NAME     |     CREATED AT      | HEALTH  | STATUS  | EXTERNAL ENDPOINT | INTERNAL ENDPOINT |
