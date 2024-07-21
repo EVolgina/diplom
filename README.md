@@ -187,9 +187,7 @@ Kubernetes control plane is running at https://10.5.0.14
 CoreDNS is running at https://10.5.0.14/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
 
 To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
-ubuntu@cl1ald2puucg4gqoi8h6-apav:~$ kubectl get nodes
-NAME                        STATUS   ROLES    AGE     VERSION
-cl1d7h35ocdl5e26bres-apul   Ready    <none>   5h23m   v1.26.2
+
 ubuntu@cl1ald2puucg4gqoi8h6-apav:~$ kubectl get pods --all-namespaces
 NAMESPACE     NAME                                  READY   STATUS    RESTARTS        AGE
 kube-system   coredns-57b57bfc5b-sbgdg              1/1     Running   0               5h28m
@@ -258,7 +256,6 @@ REVISION: 1
 NOTES:
 kube-prometheus-stack has been installed. Check its status by running:
   kubectl --namespace default get pods -l "release=kube-prometheus"
-
 Visit https://github.com/prometheus-operator/kube-prometheus for instructions on how to create & configure Alertmanager and Prometheus instances using the Operator.
 ubuntu@cl1ald2puucg4gqoi8h6-apav:~$ sudo nano deployment.yaml
 ubuntu@cl1ald2puucg4gqoi8h6-apav:~$ kubectl apply -f deployment.yaml
@@ -290,6 +287,39 @@ kube-prometheus-kube-state-metrics         ClusterIP   10.96.249.31    <none>   
 kube-prometheus-prometheus-node-exporter   ClusterIP   10.96.197.109   <none>        9100/TCP                     25m
 kubernetes                                 ClusterIP   10.96.128.1     <none>        443/TCP                      6h40m
 prometheus-operated                        ClusterIP   None            <none>        9090/TCP                     24m
+```
+```
+ubuntu@cl1mfrel9uvdtfjp7mdf-inyb:~$ cat ~/.kube/config
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUM1ekNDQWMrZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFWTVJNd0VRWURWUVFERXdwcmRXSmwKY201bGRHVnpNQjRYRFRJME1EY3lNVEE1TlRBd05sb1hEVE0wTURjeE9UQTVOVEF3Tmxvd0ZURVRNQkVHQTFVRQpBeE1LYTNWaVpYSnVaWFJsY3pDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBTGNQCnZ3ek52RXhzTXkycEpPTC9OczdXbHBSZmVEUFpGVlo4ZllPNmpxRkVMNkgxUXJlbXE2YWdhRUJka0NUaHRXSHAKYUo5Z1J3bmM0SVZnU2hUQ2wwRUxUWk8rRFVwKzNLd2I2elEyUzJiVDltU2ZxNXlhOUtUODhNWjNWdHFuMFJUYgpKK0xiUnZuRmJabjdhczNCV2xYWFVzZlJUVWtEVCsxcHJQaDUySTlLV2pIZEg3OXB5a3pZOGVyNHkyNk9KYTRZCkRoS2Z4VU5FcE9Ra0Fqek1Sd0Q1MVdrRTJWOTNiRzRUeVBGUWc3REdHc1VWSUQ0dkpmWUNMRkFqYU04Z2taYSsKSklxaGtCSHdmc0lCRWpQQnovZzd2WGpsSzhTTjk3VndSbFg2aFF6ZEFBTi96T2YxUmh6NmNBUnBDMHdzWWNseApZOWRmenplTUNRbUdhSERlK01VQ0F3RUFBYU5DTUVBd0RnWURWUjBQQVFIL0JBUURBZ0trTUE4R0ExVWRFd0VCCi93UUZNQU1CQWY4d0hRWURWUjBPQkJZRUZOLzkvL0lONk1NYzBLZ085ZG5DNit5Um1LWWtNQTBHQ1NxR1NJYjMKRFFFQkN3VUFBNElCQVFBYVludTdDUlJpbHc5bkhqc2d0MUtjdHVZS2I5RTFmQTk1aFBJWWdRaVAxbStTbFF2ZwpwaVpJN2psOUd4Zk9jcmNOVEY4cnl3aGlDdWZ5dE80dXBoZGdGVzhCUzlraVptY2lPNFppRVBCU1NrMXNTVjQ3CmxWbytzZmVKcE1yZUN6MUN0ZVdyczhCZ1Jrb3JLTDlsR21Sd3pjOHZaeGpJMFZ3S1JLcm1EUWsxWWJpSFR2R1kKN3l2QUdJQ3F0UURVRTNjbFR5eHVUYUt4NlF4ZWNkV245Y3AzVmxHaXhWT1F3WW1rd1FkZEtnM0Q1a3hjSUh1aAo4anVmWUxESm9YQVgrZWZXS1pORm5YdFp1TldZZis1VDU4QmhIc1RKVWt3ank3WEg0NFI0NjQ0TlVkaVhCbmw2CjlQUml2VnJzSWJqam5YNG1MZ3JoeWlvNzZvOWR3NGl5bXorcgotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+    server: https://10.5.0.13
+  name: yc-managed-k8s-cat64f79rcpm2u6n7d2i
+contexts:
+- context:
+    cluster: yc-managed-k8s-cat64f79rcpm2u6n7d2i
+    user: yc-managed-k8s-cat64f79rcpm2u6n7d2i
+  name: yc-k8s-regional
+current-context: yc-k8s-regional
+kind: Config
+preferences: {}
+users:
+- name: yc-managed-k8s-cat64f79rcpm2u6n7d2i
+  user:
+    exec:
+      apiVersion: client.authentication.k8s.io/v1beta1
+      args:
+      - k8s
+      - create-token
+      - --profile=default
+      command: /home/ubuntu/yandex-cloud/bin/yc
+      env: null
+      provideClusterInfo: false
+ubuntu@cl1mfrel9uvdtfjp7mdf-inyb:~$ kubectl create serviceaccount github-deployer
+serviceaccount/github-deployer created
+ubuntu@cl1mfrel9uvdtfjp7mdf-inyb:~$ kubectl create secret generic github-deployer-token --from-literal=token=$(kubectl get secret $(kubectl get sa github-deployer -o jsonpath="{.secrets[0].name}") -o jsonpath="{.data.token}" | base64 --decode) -n default
+secret/github-deployer-token created
 ```
 ### Установка и настройка CI/CD
 - Осталось настроить ci/cd систему для автоматической сборки docker image и деплоя приложения при изменении кода.
