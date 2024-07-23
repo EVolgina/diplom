@@ -235,7 +235,28 @@ git clone https://github.com/prometheus-operator/kube-prometheus.git - клон�
 cd kube-prometheus
 kubectl apply -f manifests/setup  - устанавливаем все компоненты
 kubectl apply -f manifests/
-
+ubuntu@cl1mfrel9uvdtfjp7mdf-inyb:~/prom/kube-prometheus$ kubectl get svc -n monitoring
+NAME                    TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)                      AGE
+alertmanager-main       ClusterIP   10.96.163.242   <none>        9093/TCP,8080/TCP            6m10s
+alertmanager-operated   ClusterIP   None            <none>        9093/TCP,9094/TCP,9094/UDP   3m21s
+blackbox-exporter       ClusterIP   10.96.153.250   <none>        9115/TCP,19115/TCP           6m10s
+grafana                 ClusterIP   10.96.162.248   <none>        3000/TCP                     6m7s
+kube-state-metrics      ClusterIP   None            <none>        8443/TCP,9443/TCP            6m6s
+node-exporter           ClusterIP   None            <none>        9100/TCP                     6m5s
+prometheus-adapter      ClusterIP   10.96.235.173   <none>        443/TCP                      6m3s
+prometheus-k8s          ClusterIP   10.96.149.117   <none>        9090/TCP,8080/TCP            6m3s
+prometheus-operated     ClusterIP   None            <none>        9090/TCP                     3m15s
+prometheus-operator     ClusterIP   None            <none>        8443/TCP                     6m2s
+ubuntu@cl1mfrel9uvdtfjp7mdf-inyb:~/prom/kube-prometheus$ kubectl patch svc grafana -n monitoring -p '{"spec": {"type": "NodePort"}}'
+service/grafana patched
+ubuntu@cl1mfrel9uvdtfjp7mdf-inyb:~$ sudo nano policy.yaml - настроили политики
+ubuntu@cl1mfrel9uvdtfjp7mdf-inyb:~$ kubectl apply -f policy.yaml
+networkpolicy.networking.k8s.io/allow-grafana-access created
+ubuntu@cl1mfrel9uvdtfjp7mdf-inyb:~$ kubectl get nodes -o wide
+NAME                        STATUS   ROLES    AGE    VERSION   INTERNAL-IP   EXTERNAL-IP      OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
+cl1obn510er8eketq28u-ekel   Ready    <none>   2d4h   v1.27.3   10.5.0.10     89.169.137.186   Ubuntu 20.04.6 LTS   5.4.0-177-generic   containerd://1.6.28
+cl1obn510er8eketq28u-ipub   Ready    <none>   30m    v1.27.3   10.5.0.16     89.169.137.117   Ubuntu 20.04.6 LTS   5.4.0-177-generic   containerd://1.6.28
+cl1obn510er8eketq28u-uzuk   Ready    <none>   27m    v1.27.3   10.5.0.35     51.250.90.34     Ubuntu 20.04.6 LTS   5.4.0-177-generic   containerd://1.6.28
 
 ```
 ### Установка и настройка CI/CD
