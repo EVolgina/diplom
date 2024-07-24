@@ -286,3 +286,19 @@ To https://github.com/EVolgina/diplom.git
 - Интерфейс ci/cd сервиса доступен по http.
 - При любом коммите в репозиторие с тестовым приложением происходит сборка и отправка в регистр Docker образа.
 - При создании тега (например, v1.0.0) происходит сборка и отправка с соответствующим label в регистри, а также деплой соответствующего Docker образа в кластер Kubernetes.
+```
+ubuntu@cl1mfrel9uvdtfjp7mdf-inyb:~/ci-cd$ sudo nano  nginx.yaml
+ubuntu@cl1mfrel9uvdtfjp7mdf-inyb:~/ci-cd$ git add .
+ubuntu@cl1mfrel9uvdtfjp7mdf-inyb:~/ci-cd$ git commit -m "Trigger Docker build"
+[master dcd9dbf] Trigger Docker build
+ 1 file changed, 1 deletion(-)
+ubuntu@cl1mfrel9uvdtfjp7mdf-inyb:~/ci-cd$ git push origin master
+Counting objects: 3, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 307 bytes | 307.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/EVolgina/app.git
+   1b81f2b..dcd9dbf  master -> master
+```
