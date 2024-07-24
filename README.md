@@ -301,4 +301,13 @@ Total 3 (delta 1), reused 0 (delta 0)
 remote: Resolving deltas: 100% (1/1), completed with 1 local object.
 To https://github.com/EVolgina/app.git
    1b81f2b..dcd9dbf  master -> master
+ubuntu@cl1mfrel9uvdtfjp7mdf-inyb:~/ci-cd/app$ sudo nano README.md
+ubuntu@cl1mfrel9uvdtfjp7mdf-inyb:~/ci-cd/app$ git push origin v1.0.0
+Total 0 (delta 0), reused 0 (delta 0)
+To https://github.com/EVolgina/app.git
+ * [new tag]         v1.0.0 -> v1.0.0
+ubuntu@cl1mfrel9uvdtfjp7mdf-inyb:~/ci-cd/app$ git tag
+v1.0.0
 ```
+![dicker]()
+![dockertag]()
