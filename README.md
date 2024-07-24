@@ -310,4 +310,4 @@ ubuntu@cl1mfrel9uvdtfjp7mdf-inyb:~/ci-cd/app$ git tag
 v1.0.0
 ```
 ![dicker](https://github.com/EVolgina/diplom/blob/main/dockermain.png)
-![dockertag]()
+![dockertag](https://github.com/EVolgina/diplom/blob/main/dockertag.png)
