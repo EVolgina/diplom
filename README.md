@@ -309,5 +309,5 @@ To https://github.com/EVolgina/app.git
 ubuntu@cl1mfrel9uvdtfjp7mdf-inyb:~/ci-cd/app$ git tag
 v1.0.0
 ```
-![dicker]()
+![dicker](https://github.com/EVolgina/diplom/blob/main/dockermain.png)
 ![dockertag]()
