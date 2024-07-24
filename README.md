@@ -257,8 +257,24 @@ NAME                        STATUS   ROLES    AGE    VERSION   INTERNAL-IP   EXT
 cl1obn510er8eketq28u-ekel   Ready    <none>   2d4h   v1.27.3   10.5.0.10     89.169.137.186   Ubuntu 20.04.6 LTS   5.4.0-177-generic   containerd://1.6.28
 cl1obn510er8eketq28u-ipub   Ready    <none>   30m    v1.27.3   10.5.0.16     89.169.137.117   Ubuntu 20.04.6 LTS   5.4.0-177-generic   containerd://1.6.28
 cl1obn510er8eketq28u-uzuk   Ready    <none>   27m    v1.27.3   10.5.0.35     51.250.90.34     Ubuntu 20.04.6 LTS   5.4.0-177-generic   containerd://1.6.28
-
+ubuntu@cl1mfrel9uvdtfjp7mdf-inyb:~/diplom$ git push origin k8s-config
+Username for 'https://github.com': EVolgina
+Password for 'https://EVolgina@github.com':
+Counting objects: 7, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (7/7), done.
+Writing objects: 100% (7/7), 988 bytes | 988.00 KiB/s, done.
+Total 7 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), completed with 1 local object.
+remote:
+remote: Create a pull request for 'k8s-config' on GitHub by visiting:
+remote:      https://github.com/EVolgina/diplom/pull/new/k8s-config
+remote:
+To https://github.com/EVolgina/diplom.git
+ * [new branch]      k8s-config -> k8s-config
 ```
+![grafana]()
+![graf]()
 ### Установка и настройка CI/CD
 - Осталось настроить ci/cd систему для автоматической сборки docker image и деплоя приложения при изменении кода.
 ## Цель:
