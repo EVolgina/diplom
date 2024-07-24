@@ -273,7 +273,7 @@ remote:
 To https://github.com/EVolgina/diplom.git
  * [new branch]      k8s-config -> k8s-config
 ```
-![grafana]()
+![grafana](https://github.com/EVolgina/diplom/blob/main/monitoring.png)
 ![graf]()
 ### Установка и настройка CI/CD
 - Осталось настроить ci/cd систему для автоматической сборки docker image и деплоя приложения при изменении кода.
