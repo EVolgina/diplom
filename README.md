@@ -275,7 +275,7 @@ To https://github.com/EVolgina/diplom.git
 ```
 ![grafana](https://github.com/EVolgina/diplom/blob/main/monitoring.png)
 ![graf](https://github.com/EVolgina/diplom/blob/main/grafana.png)
-![ng]()
+![ng](https://github.com/EVolgina/diplom/blob/main/ngnix.png)
 ### Установка и настройка CI/CD
 - Осталось настроить ci/cd систему для автоматической сборки docker image и деплоя приложения при изменении кода.
 ## Цель:
