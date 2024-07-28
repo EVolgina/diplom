@@ -308,6 +308,15 @@ To https://github.com/EVolgina/app.git
  * [new tag]         v1.0.0 -> v1.0.0
 ubuntu@cl1mfrel9uvdtfjp7mdf-inyb:~/ci-cd/app$ git tag
 v1.0.0
+ubuntu@cl1mfrel9uvdtfjp7mdf-inyb:~/ci-cd/app$ git push origin v1.0.2
+Username for 'https://github.com': EVolgina
+Password for 'https://EVolgina@github.com':
+Counting objects: 1, done.
+Writing objects: 100% (1/1), 171 bytes | 171.00 KiB/s, done.
+Total 1 (delta 0), reused 0 (delta 0)
+To https://github.com/EVolgina/app.git
+ * [new tag]         v1.0.2 -> v1.0.2
 ```
 ![dicker](https://github.com/EVolgina/diplom/blob/main/dockermain.png)
 ![dockertag](https://github.com/EVolgina/diplom/blob/main/dockertag.png)
+![dockertag2]()
