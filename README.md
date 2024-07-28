@@ -317,6 +317,8 @@ Total 1 (delta 0), reused 0 (delta 0)
 To https://github.com/EVolgina/app.git
  * [new tag]         v1.0.2 -> v1.0.2
 ```
-![dicker](https://github.com/EVolgina/diplom/blob/main/dockermain.png)
+[Приложение](https://github.com/EVolgina/app)
+[workflows](https://github.com/EVolgina/app/actions)
+![docker](https://github.com/EVolgina/diplom/blob/main/dockermain.png)
 ![dockertag](https://github.com/EVolgina/diplom/blob/main/dockertag.png)
 ![dockertag2]()
