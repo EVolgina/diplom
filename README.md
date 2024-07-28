@@ -21,7 +21,7 @@
 - Убедитесь, что теперь вы можете выполнить команды terraform destroy и terraform apply без дополнительных ручных действий.
 - В случае использования Terraform Cloud в качестве backend убедитесь, что применение изменений успешно проходит, используя web-интерфейс Terraform cloud.
 [main.tf](https://github.com/EVolgina/diplom/blob/main/main.tf)
-[kub.tf]()
+[kub.tf](https://github.com/EVolgina/diplom/blob/main/kub.tf)
 ```
 yandex_vpc_network.netology-net: Creating...
 yandex_vpc_network.netology-net: Creation complete after 4s [id=enp574hn21e49lro42lu]
